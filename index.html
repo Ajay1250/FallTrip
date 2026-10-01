@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Ajay's Quebec fall-colours road trip itinerary, October 7–12, 2026.">
   <title>Quebec Fall Colours Road Trip · Oct 7–12, 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <style>
     :root { --ink:#26332d; --muted:#5f6b63; --paper:#fffdf8; --cream:#f6efe2; --pine:#214b43; --rust:#b6542c; --gold:#d8912d; --green:#438057; --line:#ded6c9; --shadow:0 16px 40px rgba(43,53,39,.11); }
     * { box-sizing:border-box; }
@@ -13,6 +14,8 @@
     .hero { color:white; background:linear-gradient(125deg,rgba(20,56,49,.96),rgba(52,90,63,.88) 50%,rgba(164,67,35,.9)), radial-gradient(circle at 82% 20%,#e8ad42 0 4%,transparent 4.5%); min-height:455px; padding:52px 24px 86px; overflow:hidden; position:relative; }
     .hero:after { content:""; position:absolute; inset:auto -8% -115px; height:190px; background:var(--paper); border-radius:50% 50% 0 0 / 24% 24% 0 0; transform:rotate(-2deg); }
     .wrap { width:min(1160px,100% - 40px); margin:auto; position:relative; z-index:1; }
+    .brand-lockup { display:inline-flex; align-items:center; gap:10px; margin-bottom:26px; color:white; font-size:.76rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .brand-mark { width:42px; height:42px; display:block; flex:none; }
     .eyebrow { margin:0 0 10px; font-size:.78rem; letter-spacing:.14em; font-weight:800; text-transform:uppercase; color:#f9ce8a; }
     h1 { font-family:Georgia,"Times New Roman",serif; font-weight:700; font-size:clamp(2.45rem,7vw,5.2rem); letter-spacing:-.055em; line-height:.94; max-width:790px; margin:0; }
     .lede { max-width:680px; margin:20px 0 0; color:#f7f4e9; font-size:1.08rem; }
@@ -63,20 +66,41 @@
     .photo:hover img { transform:scale(1.04); }
     .photo figcaption { position:absolute; inset:auto 0 0; padding:30px 13px 13px; width:100%; color:white; font-weight:800; font-size:.92rem; background:linear-gradient(transparent,rgba(12,27,22,.84)); }
     .photo figcaption small { display:block; margin-top:2px; font-size:.73rem; font-weight:500; opacity:.86; }
-    .route-map { overflow:hidden; background:linear-gradient(145deg,#eaf1e9,#f8f1e4); border:1px solid var(--line); border-radius:14px; }
-    .route-map svg { display:block; width:100%; height:auto; min-height:290px; }
-    .map-label { fill:#315447; font:700 13px ui-sans-serif,system-ui,sans-serif; paint-order:stroke; stroke:#f8f4ea; stroke-width:4px; stroke-linejoin:round; }
-    .map-sub { fill:#637168; font:600 11px ui-sans-serif,system-ui,sans-serif; } .map-water { fill:#b8d7db; opacity:.82; } .map-road { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .route-map { position:relative; overflow:hidden; background:#e8eee7; border:1px solid var(--line); border-radius:14px; }
+    #routeMap { width:100%; height:clamp(390px,52vw,610px); z-index:0; }
+    .map-fallback { position:absolute; z-index:500; inset:0 0 auto; margin:0; padding:10px 14px; background:rgba(255,253,248,.94); color:var(--muted); font-size:.86rem; }
+    .map-fallback[hidden] { display:none; }
+    .trip-pin { background:transparent; border:0; }
+    .trip-pin span { display:grid; place-items:center; min-width:38px; height:38px; padding:0 5px; border:3px solid white; border-radius:50px; box-shadow:0 2px 8px rgba(20,35,29,.38); color:white; font:800 13px/1 ui-sans-serif,system-ui,sans-serif; }
+    .day-1 span { background:#b6542c; } .day-2 span { background:#aa7415; } .day-3 span { background:#267248; }
+    .day-4 span { background:#39718a; } .day-5 span { background:#76518b; } .day-6 span { background:#a13d3b; }
+    .route-day-label { background:transparent; border:0; }
+    .route-day-label span { display:block; padding:4px 7px; border:1px solid white; border-radius:6px; box-shadow:0 2px 7px rgba(20,35,29,.28); color:white; font:800 11px/1.2 ui-sans-serif,system-ui,sans-serif; white-space:nowrap; }
+    .leaflet-popup-content-wrapper { border-radius:8px; }
+    .map-legend { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px 12px; margin:0 0 18px; }
+    .map-legend span { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:.86rem; }
+    .map-legend b { display:grid; place-items:center; width:23px; height:23px; flex:none; border-radius:50%; color:white; font-size:.75rem; }
+    .map-legend .day-1 b { background:#b6542c; } .map-legend .day-2 b { background:#aa7415; } .map-legend .day-3 b { background:#267248; }
+    .map-legend .day-4 b { background:#39718a; } .map-legend .day-5 b { background:#76518b; } .map-legend .day-6 b { background:#a13d3b; }
     .route-list { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
     .route-day { padding:14px; border-left:4px solid var(--pine); background:#faf7ef; border-radius:0 10px 10px 0; } .route-day h3 { margin:0 0 4px; font-size:.95rem; } .route-day p { margin:0; font-size:.86rem; color:var(--muted); } .route-day a { display:inline-block; margin-top:7px; color:var(--rust); font-size:.82rem; font-weight:800; }
     footer { padding:12px 0 40px; color:#637168; text-align:center; font-size:.82rem; }
-    @media (max-width:780px) { .grid,.priority,.hotel-list,.route-list { grid-template-columns:1fr; } .gallery { grid-auto-columns:80%; } .metrics { grid-template-columns:repeat(2,1fr); } .flex { grid-template-columns:1fr; } main { width:min(100% - 24px,1160px); } .hero { min-height:470px; padding:44px 12px 110px; } }
+    @media (max-width:780px) { .grid,.priority,.hotel-list,.route-list { grid-template-columns:1fr; } .map-legend { grid-template-columns:repeat(2,minmax(0,1fr)); } #routeMap { height:460px; } .gallery { grid-auto-columns:80%; } .metrics { grid-template-columns:repeat(2,1fr); } .flex { grid-template-columns:1fr; } main { width:min(100% - 24px,1160px); } .hero { min-height:470px; padding:44px 12px 110px; } }
     @media print { @page { margin:.45in; } body { background:white; font-size:10px; } .hero { min-height:0; padding:22px; background:#214b43 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; } .hero:after, nav { display:none; } h1 { font-size:34px; } main { width:100%; margin:14px auto; } section { box-shadow:none; border:1px solid #bbb; border-radius:8px; padding:16px; margin:12px 0; break-inside:avoid; } .table-wrap { overflow:visible; } table { min-width:0; font-size:8px; } th,td { padding:6px; } .grid,.priority,.hotel-list { gap:8px; } .card,.night,.metric { padding:10px; } .callout { padding:10px; } a { color:inherit; text-decoration:none; } }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="wrap">
+      <div class="brand-lockup" aria-label="Ajay's Quebec fall road trip 2026">
+        <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="Mountain road and autumn leaf">
+          <circle cx="24" cy="24" r="23" fill="#fffdf8"/>
+          <path d="M7 34 18 19l6 8 5-7 12 14H7Z" fill="#315c4e"/>
+          <path d="M25 34c3-5 3-9 0-13m0 13c-1-4-4-6-7-7m7 7c1-4 4-6 7-7" fill="none" stroke="#d8912d" stroke-linecap="round" stroke-width="2.5"/>
+          <circle cx="25" cy="19" r="2.2" fill="#b6542c"/>
+        </svg>
+        <span>Quebec fall road trip · 2026</span>
+      </div>
       <p class="eyebrow">Ajay’s road trip · Ontario → Québec</p>
       <h1>Quebec in fall colour</h1>
       <p class="lede">A six-day, five-night loop through the Eastern Townships, Charlevoix and the Laurentians—built around a major hike, big views, a canopy walk and one deliberately unhurried day in Tremblant.</p>
@@ -88,26 +112,15 @@
 
     <section id="route">
       <h2>Route map &amp; driving days</h2>
-      <p class="sub">Your road-trip sequence, from Ajax through Québec and back. Solid lines are major driving days; gold rings mark overnight bases. This is a geographic route overview—use the linked drive cards for live road navigation.</p>
-      <div class="legend"><span class="status red">Major driving day</span><span class="status orange">Scenic transfer</span><span class="status green">Hotel base / overnight</span><span class="status grey">Local exploration</span></div>
-      <div class="route-map" role="img" aria-label="Map showing Ajay's road trip from Ajax to Lac-Mégantic, Charlevoix and Mont-Tremblant, then back to Ajax.">
-        <svg viewBox="0 0 1000 500" aria-hidden="true">
-          <path class="map-water" d="M760 0 C810 55 815 130 860 180 C900 225 930 270 1000 285 L1000 0 Z"/>
-          <path class="map-water" d="M0 480 C180 445 310 470 445 500 L0 500 Z" opacity=".35"/>
-          <path d="M40 75 C240 35 530 80 690 35 C815 0 915 20 980 40" fill="none" stroke="#c9d5bc" stroke-width="2" opacity=".7"/>
-          <path d="M40 160 C220 130 405 182 598 136 C770 95 870 105 980 133" fill="none" stroke="#c9d5bc" stroke-width="2" opacity=".7"/>
-          <path d="M40 280 C185 252 395 295 590 260 C760 230 890 220 975 250" fill="none" stroke="#c9d5bc" stroke-width="2" opacity=".7"/>
-          <text x="68" y="66" class="map-sub">Ontario</text><text x="525" y="54" class="map-sub">Québec</text><text x="858" y="36" class="map-sub">St. Lawrence River</text>
-          <path class="map-road" d="M69 419 C255 400 630 310 900 257" stroke="#b6542c" stroke-width="6" opacity=".88"/>
-          <path class="map-road" d="M900 257 L864 268 L939 82" stroke="#d8912d" stroke-width="6" opacity=".9"/>
-          <path class="map-road" d="M939 82 L933 60 L939 82" stroke="#438057" stroke-width="6" opacity=".9"/>
-          <path class="map-road" d="M939 82 L935 66 L533 206 L521 198" stroke="#915f99" stroke-width="6" opacity=".86"/>
-          <path class="map-road" d="M521 198 C380 250 170 345 69 419" stroke="#4f7897" stroke-width="6" opacity=".88"/>
-          <g fill="#fffdf8" stroke="#b6542c" stroke-width="3"><circle cx="69" cy="419" r="8"/><circle cx="900" cy="257" r="8"/><circle cx="864" cy="268" r="8"/><circle cx="939" cy="82" r="8"/><circle cx="933" cy="60" r="8"/><circle cx="935" cy="66" r="8"/><circle cx="533" cy="206" r="8"/><circle cx="521" cy="198" r="8"/></g>
-          <g fill="none" stroke="#d8912d" stroke-width="4"><circle cx="900" cy="257" r="14"/><circle cx="939" cy="82" r="14"/><circle cx="521" cy="198" r="14"/></g>
-          <g class="map-label"><text x="42" y="444">Ajax</text><text x="815" y="246">Lac-Mégantic</text><text x="792" y="289">Mont-Mégantic</text><text x="850" y="108">Baie-Saint-Paul</text><text x="780" y="52">Hautes-Gorges</text><text x="790" y="75">Le Massif</text><text x="548" y="228">Sentier des Cimes</text><text x="388" y="190">Mont-Tremblant</text></g>
-          <g fill="#fff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="800" text-anchor="middle"><text x="436" y="338">DAY 1</text><text x="886" y="175">DAY 2</text><text x="945" y="72">DAY 3</text><text x="720" y="125">DAY 4</text><text x="268" y="316">DAY 6</text></g>
-        </svg>
+      <p class="sub">Every stop stays visible at overview zoom. Day-colored lines connect the itinerary stops, with matching day labels; pins are nudged slightly on-screen where locations are close together. Use the day cards below for live driving directions.</p>
+      <div class="map-legend" aria-label="Map pin key">
+        <span class="day-1"><b>1</b> Wed Oct 7 · Ajax / Lac-Mégantic</span><span class="day-2"><b>2</b> Thu Oct 8 · Mont-Mégantic / Charlevoix</span>
+        <span class="day-3"><b>3</b> Fri Oct 9 · Hautes-Gorges</span><span class="day-4"><b>4</b> Sat Oct 10 · Le Massif / canopy walk</span>
+        <span class="day-5"><b>5</b> Sun Oct 11 · Tremblant activities</span><span class="day-6"><b>6</b> Mon Oct 12 · return to Ajax</span>
+      </div>
+      <div class="route-map">
+        <p class="map-fallback" id="mapFallback" role="status">The interactive map needs an internet connection to load. The dated stop list and driving links below are still available.</p>
+        <div id="routeMap" role="application" aria-label="Interactive map of all stops on Ajay's Quebec road trip"></div>
       </div>
       <div class="route-list">
         <article class="route-day"><h3>Day 1 · Wed Oct 7</h3><p>Ajax → Lac-Mégantic · ~7 hr</p><a href="https://www.google.com/maps/dir/Ajax,+ON/Lac-M%C3%A9gantic,+QC" target="_blank" rel="noopener">Open drive in Maps ↗</a></article>
@@ -192,8 +205,95 @@
       <div class="flex" style="margin-top:20px"><div class="flow">Oct 7 · 🚗 Drive<br>Oct 8 · ⛰️ Mountain → 🚗 Charlevoix<br>Oct 9 · 🥾 Big hike + gorge<br>Oct 10 · ⛰️ Mountain → 🚗 transfer → 🌲 canopy<br>Oct 11 · 🌅 → 😌 → 🧗/☕ → 🚠<br>Oct 12 · 🚗 Drive home</div><div class="card"><h3>Daily driving estimate</h3><p><strong>Oct 7:</strong> ~7 hr &nbsp;·&nbsp; <strong>Oct 8:</strong> ~5¼–5¾ hr &nbsp;·&nbsp; <strong>Oct 9:</strong> ~2 hr &nbsp;·&nbsp; <strong>Oct 10:</strong> ~5 hr &nbsp;·&nbsp; <strong>Oct 11:</strong> ~1–1½ hr local &nbsp;·&nbsp; <strong>Oct 12:</strong> ~6½ hr</p><p>Oct 10 is the tightest day. Keep the Le Massif → Sentier des Cimes drive honest and be ready to shorten Le Buton if traffic or weather eats into the buffer.</p></div></div>
     </section>
 
-    <section id="notes"><h2>Before you go</h2><div class="callout"><strong>Verify 2026 fall operations shortly before booking.</strong> Lift, gondola, shuttle, park-capacity and last-entry times can change with weather and seasonal operations. This itinerary uses the planned windows, but official operator pages should have the final word.</div><p class="note">Designed as a self-contained page for GitHub Pages: no scripts, fonts, images or external dependencies are required. Open this file directly in any modern browser or publish it as <code>index.html</code> in a GitHub Pages repository.</p></section>
+    <section id="notes"><h2>Before you go</h2><div class="callout"><strong>Verify 2026 fall operations shortly before booking.</strong> Lift, gondola, shuttle, park-capacity and last-entry times can change with weather and seasonal operations. This itinerary uses the planned windows, but official operator pages should have the final word.</div><p class="note">The itinerary works as a standalone page. The interactive map loads Leaflet and OpenStreetMap tiles from the internet; if those services are unavailable, use the dated stop cards and driving links above.</p></section>
   </main>
   <footer>Quebec Fall Colours Road Trip · October 7–12, 2026 · Prepared for Ajay</footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (() => {
+      const fallback = document.getElementById("mapFallback");
+      if (!window.L) return;
+
+      const map = L.map("routeMap", { scrollWheelZoom: false, zoomControl: true });
+      const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18
+      }).addTo(map);
+      tiles.once("load", () => { fallback.hidden = true; });
+      tiles.once("tileerror", () => {
+        fallback.textContent = "Map tiles could not be reached. The dated stop list and driving links below are still available.";
+      });
+
+      const ajax = [43.8509, -79.0204];
+      const lacMegantic = [45.5834, -70.8829];
+      const montMegantic = [45.4556, -71.1535];
+      const baieSaintPaul = [47.4411, -70.4986];
+      const hautesGorges = [47.8904, -70.5948];
+      const leMassif = [47.2874, -70.6346];
+      const sentierDesCimes = [46.1187, -74.4818];
+      const montagneVerte = [46.206, -74.613];
+      const montTremblant = [46.1188, -74.5962];
+      const montKing = [46.105, -74.652];
+      const stops = [
+        { day: 1, label: "1 / 6", date: "Wed Oct 7 and Mon Oct 12", name: "Ajax", detail: "Day 1 trip start · Day 6 return home", coords: ajax, offset: [-24, -8] },
+        { day: 1, date: "Wed Oct 7", name: "Lac-Mégantic", detail: "First-night hotel base", coords: lacMegantic, offset: [20, -12] },
+        { day: 2, date: "Thu Oct 8", name: "Parc national du Mont-Mégantic", detail: "Summit viewpoints and short hikes", coords: montMegantic, offset: [-20, 16] },
+        { day: 2, date: "Thu Oct 8", name: "Baie-Saint-Paul", detail: "Charlevoix hotel base · nights of Oct 8 and 9", coords: baieSaintPaul, offset: [-20, -8] },
+        { day: 3, date: "Fri Oct 9", name: "Parc national des Hautes-Gorges", detail: "Acropole des Draveurs hike and Draveur Visitors Centre", coords: hautesGorges, offset: [18, -12] },
+        { day: 4, date: "Sat Oct 10", name: "Le Massif de Charlevoix", detail: "Le Buton and the Charlevoix panorama", coords: leMassif, offset: [22, 14] },
+        { day: 4, date: "Sat Oct 10", name: "Sentier des Cimes Laurentides", detail: "Canopy walk at Mont-Blanc", coords: sentierDesCimes, offset: [-20, 10] },
+        { day: 5, date: "Sun Oct 11", name: "Montagne Verte", detail: "Optional sunrise hike; check trail access", coords: montagneVerte, offset: [-30, -18] },
+        { day: 5, date: "Sun Oct 11", name: "Mont-Tremblant village", detail: "Hotel base, panoramic gondola and optional Ziptrek", coords: montTremblant, offset: [30, -14] },
+        { day: 5, date: "Sun Oct 11", name: "Mont King", detail: "Optional sunset viewpoint", coords: montKing, offset: [0, 30] }
+      ];
+      const bounds = stops.map((stop) => stop.coords);
+      const routes = [
+        { day: 1, points: [ajax, lacMegantic], labelAt: [44.72, -75.02] },
+        { day: 2, points: [lacMegantic, montMegantic, baieSaintPaul], labelAt: [46.56, -70.92] },
+        { day: 3, points: [baieSaintPaul, hautesGorges, baieSaintPaul], labelAt: [47.68, -71.7] },
+        { day: 4, points: [baieSaintPaul, leMassif, sentierDesCimes, montTremblant], labelAt: [46.77, -72.57] },
+        { day: 5, points: [montTremblant, montagneVerte, montKing, montTremblant], labelAt: [46.0, -73.68], optional: true },
+        { day: 6, points: [montTremblant, ajax], labelAt: [44.82, -76.26] }
+      ];
+      const routeColors = { 1: "#b6542c", 2: "#aa7415", 3: "#267248", 4: "#39718a", 5: "#76518b", 6: "#a13d3b" };
+
+      routes.forEach((route) => {
+        const color = routeColors[route.day];
+        L.polyline(route.points, {
+          color,
+          weight: 4,
+          opacity: 0.85,
+          dashArray: route.optional ? "7 7" : null,
+          lineCap: "round",
+          lineJoin: "round"
+        }).addTo(map);
+        L.marker(route.labelAt, {
+          interactive: false,
+          icon: L.divIcon({
+            className: `route-day-label day-${route.day}`,
+            html: `<span style="background:${color}">DAY ${route.day}</span>`,
+            iconSize: [58, 24],
+            iconAnchor: [29, 12]
+          })
+        }).addTo(map);
+      });
+
+      stops.forEach((stop) => {
+        const iconSize = stop.label ? [50, 38] : [38, 38];
+        const icon = L.divIcon({
+          className: `trip-pin day-${stop.day}`,
+          html: `<span>${stop.label || stop.day}</span>`,
+          iconSize,
+          iconAnchor: [iconSize[0] / 2 - stop.offset[0], iconSize[1] / 2 - stop.offset[1]],
+          popupAnchor: [stop.offset[0], -20 + stop.offset[1]]
+        });
+        const marker = L.marker(stop.coords, { icon }).addTo(map);
+        marker.bindPopup(`<strong>Day ${stop.day} · ${stop.date}</strong><br>${stop.name}<br><small>${stop.detail}</small>`);
+        marker.bindTooltip(`Day ${stop.day} · ${stop.name}`, { direction: "top", offset: [0, -24] });
+      });
+
+      map.fitBounds(bounds, { padding: [32, 32] });
+    })();
+  </script>
 </body>
 </html>
