@@ -63,8 +63,14 @@
     .photo:hover img { transform:scale(1.04); }
     .photo figcaption { position:absolute; inset:auto 0 0; padding:30px 13px 13px; width:100%; color:white; font-weight:800; font-size:.92rem; background:linear-gradient(transparent,rgba(12,27,22,.84)); }
     .photo figcaption small { display:block; margin-top:2px; font-size:.73rem; font-weight:500; opacity:.86; }
+    .route-map { overflow:hidden; background:linear-gradient(145deg,#eaf1e9,#f8f1e4); border:1px solid var(--line); border-radius:14px; }
+    .route-map svg { display:block; width:100%; height:auto; min-height:290px; }
+    .map-label { fill:#315447; font:700 13px ui-sans-serif,system-ui,sans-serif; paint-order:stroke; stroke:#f8f4ea; stroke-width:4px; stroke-linejoin:round; }
+    .map-sub { fill:#637168; font:600 11px ui-sans-serif,system-ui,sans-serif; } .map-water { fill:#b8d7db; opacity:.82; } .map-road { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .route-list { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+    .route-day { padding:14px; border-left:4px solid var(--pine); background:#faf7ef; border-radius:0 10px 10px 0; } .route-day h3 { margin:0 0 4px; font-size:.95rem; } .route-day p { margin:0; font-size:.86rem; color:var(--muted); } .route-day a { display:inline-block; margin-top:7px; color:var(--rust); font-size:.82rem; font-weight:800; }
     footer { padding:12px 0 40px; color:#637168; text-align:center; font-size:.82rem; }
-    @media (max-width:780px) { .grid,.priority,.hotel-list { grid-template-columns:1fr; } .gallery { grid-auto-columns:80%; } .metrics { grid-template-columns:repeat(2,1fr); } .flex { grid-template-columns:1fr; } main { width:min(100% - 24px,1160px); } .hero { min-height:470px; padding:44px 12px 110px; } }
+    @media (max-width:780px) { .grid,.priority,.hotel-list,.route-list { grid-template-columns:1fr; } .gallery { grid-auto-columns:80%; } .metrics { grid-template-columns:repeat(2,1fr); } .flex { grid-template-columns:1fr; } main { width:min(100% - 24px,1160px); } .hero { min-height:470px; padding:44px 12px 110px; } }
     @media print { @page { margin:.45in; } body { background:white; font-size:10px; } .hero { min-height:0; padding:22px; background:#214b43 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; } .hero:after, nav { display:none; } h1 { font-size:34px; } main { width:100%; margin:14px auto; } section { box-shadow:none; border:1px solid #bbb; border-radius:8px; padding:16px; margin:12px 0; break-inside:avoid; } .table-wrap { overflow:visible; } table { min-width:0; font-size:8px; } th,td { padding:6px; } .grid,.priority,.hotel-list { gap:8px; } .card,.night,.metric { padding:10px; } .callout { padding:10px; } a { color:inherit; text-decoration:none; } }
   </style>
 </head>
@@ -78,7 +84,40 @@
     </div>
   </header>
   <main>
-    <nav aria-label="Page sections"><a href="#itinerary">Master itinerary</a><a href="#book">Booking priorities</a><a href="#stays">Where to stay</a><a href="#experiences">Experiences</a><a href="#metrics">Trip picture</a><a href="#notes">Before you go</a></nav>
+    <nav aria-label="Page sections"><a href="#route">Route map</a><a href="#itinerary">Master itinerary</a><a href="#book">Booking priorities</a><a href="#stays">Where to stay</a><a href="#experiences">Experiences</a><a href="#metrics">Trip picture</a><a href="#notes">Before you go</a></nav>
+
+    <section id="route">
+      <h2>Route map &amp; driving days</h2>
+      <p class="sub">Your road-trip sequence, from Ajax through Québec and back. Solid lines are major driving days; gold rings mark overnight bases. This is a geographic route overview—use the linked drive cards for live road navigation.</p>
+      <div class="legend"><span class="status red">Major driving day</span><span class="status orange">Scenic transfer</span><span class="status green">Hotel base / overnight</span><span class="status grey">Local exploration</span></div>
+      <div class="route-map" role="img" aria-label="Map showing Ajay's road trip from Ajax to Lac-Mégantic, Charlevoix and Mont-Tremblant, then back to Ajax.">
+        <svg viewBox="0 0 1000 500" aria-hidden="true">
+          <path class="map-water" d="M760 0 C810 55 815 130 860 180 C900 225 930 270 1000 285 L1000 0 Z"/>
+          <path class="map-water" d="M0 480 C180 445 310 470 445 500 L0 500 Z" opacity=".35"/>
+          <path d="M40 75 C240 35 530 80 690 35 C815 0 915 20 980 40" fill="none" stroke="#c9d5bc" stroke-width="2" opacity=".7"/>
+          <path d="M40 160 C220 130 405 182 598 136 C770 95 870 105 980 133" fill="none" stroke="#c9d5bc" stroke-width="2" opacity=".7"/>
+          <path d="M40 280 C185 252 395 295 590 260 C760 230 890 220 975 250" fill="none" stroke="#c9d5bc" stroke-width="2" opacity=".7"/>
+          <text x="68" y="66" class="map-sub">Ontario</text><text x="525" y="54" class="map-sub">Québec</text><text x="858" y="36" class="map-sub">St. Lawrence River</text>
+          <path class="map-road" d="M69 419 C255 400 630 310 900 257" stroke="#b6542c" stroke-width="6" opacity=".88"/>
+          <path class="map-road" d="M900 257 L864 268 L939 82" stroke="#d8912d" stroke-width="6" opacity=".9"/>
+          <path class="map-road" d="M939 82 L933 60 L939 82" stroke="#438057" stroke-width="6" opacity=".9"/>
+          <path class="map-road" d="M939 82 L935 66 L533 206 L521 198" stroke="#915f99" stroke-width="6" opacity=".86"/>
+          <path class="map-road" d="M521 198 C380 250 170 345 69 419" stroke="#4f7897" stroke-width="6" opacity=".88"/>
+          <g fill="#fffdf8" stroke="#b6542c" stroke-width="3"><circle cx="69" cy="419" r="8"/><circle cx="900" cy="257" r="8"/><circle cx="864" cy="268" r="8"/><circle cx="939" cy="82" r="8"/><circle cx="933" cy="60" r="8"/><circle cx="935" cy="66" r="8"/><circle cx="533" cy="206" r="8"/><circle cx="521" cy="198" r="8"/></g>
+          <g fill="none" stroke="#d8912d" stroke-width="4"><circle cx="900" cy="257" r="14"/><circle cx="939" cy="82" r="14"/><circle cx="521" cy="198" r="14"/></g>
+          <g class="map-label"><text x="42" y="444">Ajax</text><text x="815" y="246">Lac-Mégantic</text><text x="792" y="289">Mont-Mégantic</text><text x="850" y="108">Baie-Saint-Paul</text><text x="780" y="52">Hautes-Gorges</text><text x="790" y="75">Le Massif</text><text x="548" y="228">Sentier des Cimes</text><text x="388" y="190">Mont-Tremblant</text></g>
+          <g fill="#fff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="800" text-anchor="middle"><text x="436" y="338">DAY 1</text><text x="886" y="175">DAY 2</text><text x="945" y="72">DAY 3</text><text x="720" y="125">DAY 4</text><text x="268" y="316">DAY 6</text></g>
+        </svg>
+      </div>
+      <div class="route-list">
+        <article class="route-day"><h3>Day 1 · Wed Oct 7</h3><p>Ajax → Lac-Mégantic · ~7 hr</p><a href="https://www.google.com/maps/dir/Ajax,+ON/Lac-M%C3%A9gantic,+QC" target="_blank" rel="noopener">Open drive in Maps ↗</a></article>
+        <article class="route-day"><h3>Day 2 · Thu Oct 8</h3><p>Lac-Mégantic → Mont-Mégantic → Baie-Saint-Paul · ~5¼–5¾ hr</p><a href="https://www.google.com/maps/dir/Lac-M%C3%A9gantic,+QC/Parc+national+du+Mont-M%C3%A9gantic/Baie-Saint-Paul,+QC" target="_blank" rel="noopener">Open drive in Maps ↗</a></article>
+        <article class="route-day"><h3>Day 3 · Fri Oct 9</h3><p>Baie-Saint-Paul ↔ Hautes-Gorges · ~2 hr round trip</p><a href="https://www.google.com/maps/dir/Baie-Saint-Paul,+QC/Parc+national+des+Hautes-Gorges-de-la-Rivi%C3%A8re-Malbaie/Baie-Saint-Paul,+QC" target="_blank" rel="noopener">Open drive in Maps ↗</a></article>
+        <article class="route-day"><h3>Day 4 · Sat Oct 10</h3><p>Baie-Saint-Paul → Le Massif → Sentier des Cimes → Tremblant · ~5 hr</p><a href="https://www.google.com/maps/dir/Baie-Saint-Paul,+QC/Le+Massif+de+Charlevoix/Sentier+des+cimes+Laurentides/Mont-Tremblant,+QC" target="_blank" rel="noopener">Open drive in Maps ↗</a></article>
+        <article class="route-day"><h3>Day 5 · Sun Oct 11</h3><p>Tremblant local: Montagne Verte, village and summit · ~1–1½ hr</p><a href="https://www.google.com/maps/search/Montagne+Verte+near+Mont-Tremblant" target="_blank" rel="noopener">Open area in Maps ↗</a></article>
+        <article class="route-day"><h3>Day 6 · Mon Oct 12</h3><p>Mont-Tremblant → Ajax · ~6½ hr</p><a href="https://www.google.com/maps/dir/Mont-Tremblant,+QC/Ajax,+ON" target="_blank" rel="noopener">Open drive in Maps ↗</a></article>
+      </div>
+    </section>
 
     <section id="itinerary">
       <h2>Master itinerary</h2>
