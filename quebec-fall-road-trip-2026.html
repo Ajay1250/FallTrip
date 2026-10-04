@@ -3,158 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ajay's Quebec fall-colours road trip itinerary, October 7–12, 2026.">
-  <title>Quebec Fall Colours Road Trip · Oct 7–12, 2026</title>
+  <title>Quebec Fall Trip — Final plan</title>
   <style>
-    :root { --ink:#26332d; --muted:#5f6b63; --paper:#fffdf8; --cream:#f6efe2; --pine:#214b43; --rust:#b6542c; --gold:#d8912d; --green:#438057; --line:#ded6c9; --shadow:0 16px 40px rgba(43,53,39,.11); }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:var(--cream); font:16px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
-    .hero { color:white; background:linear-gradient(125deg,rgba(20,56,49,.96),rgba(52,90,63,.88) 50%,rgba(164,67,35,.9)), radial-gradient(circle at 82% 20%,#e8ad42 0 4%,transparent 4.5%); min-height:455px; padding:52px 24px 86px; overflow:hidden; position:relative; }
-    .hero:after { content:""; position:absolute; inset:auto -8% -115px; height:190px; background:var(--paper); border-radius:50% 50% 0 0 / 24% 24% 0 0; transform:rotate(-2deg); }
-    .wrap { width:min(1160px,100% - 40px); margin:auto; position:relative; z-index:1; }
-    .eyebrow { margin:0 0 10px; font-size:.78rem; letter-spacing:.14em; font-weight:800; text-transform:uppercase; color:#f9ce8a; }
-    h1 { font-family:Georgia,"Times New Roman",serif; font-weight:700; font-size:clamp(2.45rem,7vw,5.2rem); letter-spacing:-.055em; line-height:.94; max-width:790px; margin:0; }
-    .lede { max-width:680px; margin:20px 0 0; color:#f7f4e9; font-size:1.08rem; }
-    .trip-tags { display:flex; flex-wrap:wrap; gap:9px; margin-top:25px; }
-    .trip-tags span { border:1px solid rgba(255,255,255,.38); background:rgba(255,255,255,.13); border-radius:100px; padding:7px 12px; font-size:.88rem; font-weight:700; }
-    main { width:min(1160px,100% - 40px); margin:-25px auto 56px; position:relative; z-index:2; }
-    nav { display:flex; gap:7px; overflow:auto; padding:12px; margin-bottom:24px; background:rgba(255,253,248,.9); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); }
-    nav a { white-space:nowrap; color:var(--pine); font-size:.88rem; font-weight:800; text-decoration:none; padding:7px 10px; border-radius:8px; }
-    nav a:hover { background:#eaf1e9; }
-    section { background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:18px; margin:22px 0; padding:clamp(20px,4vw,38px); }
-    h2 { font-family:Georgia,"Times New Roman",serif; font-size:clamp(1.75rem,3vw,2.4rem); letter-spacing:-.035em; line-height:1; margin:0 0 9px; color:var(--pine); }
-    h3 { font-size:1.06rem; margin:0 0 6px; color:var(--pine); }
-    .sub { margin:0 0 24px; color:var(--muted); }
-    .legend { display:flex; flex-wrap:wrap; gap:10px 16px; padding:12px 14px; background:#fbf7ef; border-radius:10px; margin:0 0 22px; color:var(--muted); font-size:.9rem; }
-    .status { display:inline-flex; align-items:center; gap:6px; font-weight:800; white-space:nowrap; }
-    .status:before { content:""; width:.65rem; height:.65rem; flex:none; border-radius:50%; background:currentColor; }
-    .red { color:#b33d33; } .orange { color:#b66b12; } .green { color:#267248; } .grey { color:#6c736e; }
-    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; }
-    table { border-collapse:collapse; width:100%; min-width:990px; font-size:.9rem; }
-    th { background:#eff3ea; color:var(--pine); font-size:.76rem; text-transform:uppercase; letter-spacing:.06em; text-align:left; padding:13px 12px; }
-    td { padding:13px 12px; vertical-align:top; border-top:1px solid var(--line); }
-    tbody tr:hover { background:#fffaf0; }
-    .date { width:105px; font-weight:800; color:var(--pine); } .time { width:120px; font-weight:700; } .drive { width:125px; color:#85501d; font-weight:700; } .hotel { width:144px; color:#45584b; font-weight:700; }
-    .activity strong { display:block; color:#2a4135; } .activity small { color:var(--muted); }
-    a.place-link { color:inherit; text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:3px; } a.place-link:hover { color:var(--rust); }
-    .callout { border-left:5px solid var(--gold); background:#fff8e9; padding:16px 18px; border-radius:0 10px 10px 0; margin:22px 0 0; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .card { border:1px solid var(--line); border-radius:13px; padding:18px; background:#fffefa; }
-    .card p { margin:7px 0 0; color:var(--muted); font-size:.93rem; }
-    .icon { font-size:1.55rem; margin-bottom:7px; }
-    .priority { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .priority .card { min-height:155px; }
-    .priority .card.red-card { border-top:5px solid #b33d33; } .priority .card.orange-card { border-top:5px solid #d58a22; } .priority .card.green-card { border-top:5px solid #438057; }
-    .priority ul { margin:8px 0 0; padding-left:18px; color:var(--muted); font-size:.9rem; }
-    .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .metric { padding:18px 14px; text-align:center; background:#f3f6ef; border-radius:12px; }
-    .metric b { display:block; font-family:Georgia,serif; font-size:1.8rem; color:var(--rust); line-height:1; } .metric span { display:block; margin-top:6px; font-size:.82rem; color:var(--muted); font-weight:700; }
-    .hotel-list { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
-    .night { padding:18px; border-radius:12px; background:linear-gradient(135deg,#f1f6ef,#fffaf0); border:1px solid var(--line); }
-    .night b { color:var(--rust); font-size:.86rem; letter-spacing:.04em; text-transform:uppercase; } .night h3 { margin-top:7px; } .night p { margin:5px 0 0; font-size:.9rem; color:var(--muted); }
-    .flex { display:grid; grid-template-columns:1fr 1.15fr; gap:20px; align-items:start; }
-    .flow { color:white; background:linear-gradient(135deg,#315c4e,#1c4038); padding:20px; border-radius:14px; font-weight:700; font-size:1.02rem; line-height:1.8; }
-    .note { font-size:.87rem; color:var(--muted); margin:17px 0 0; }
-    .gallery { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(245px,310px); gap:12px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; padding:4px 2px 15px; margin-top:22px; scrollbar-color:var(--rust) #eee7dc; scrollbar-width:thin; }
-    .gallery::-webkit-scrollbar { height:10px; } .gallery::-webkit-scrollbar-track { background:#eee7dc; border-radius:99px; } .gallery::-webkit-scrollbar-thumb { background:var(--rust); border-radius:99px; }
-    .photo { min-height:260px; margin:0; position:relative; overflow:hidden; border-radius:13px; background:#375d4e; scroll-snap-align:start; }
-    .photo img { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; transition:transform .35s ease; }
-    .photo:hover img { transform:scale(1.04); }
-    .photo figcaption { position:absolute; inset:auto 0 0; padding:30px 13px 13px; width:100%; color:white; font-weight:800; font-size:.92rem; background:linear-gradient(transparent,rgba(12,27,22,.84)); }
-    .photo figcaption small { display:block; margin-top:2px; font-size:.73rem; font-weight:500; opacity:.86; }
-    footer { padding:12px 0 40px; color:#637168; text-align:center; font-size:.82rem; }
-    @media (max-width:780px) { .grid,.priority,.hotel-list { grid-template-columns:1fr; } .gallery { grid-auto-columns:80%; } .metrics { grid-template-columns:repeat(2,1fr); } .flex { grid-template-columns:1fr; } main { width:min(100% - 24px,1160px); } .hero { min-height:470px; padding:44px 12px 110px; } }
-    @media print { @page { margin:.45in; } body { background:white; font-size:10px; } .hero { min-height:0; padding:22px; background:#214b43 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; } .hero:after, nav { display:none; } h1 { font-size:34px; } main { width:100%; margin:14px auto; } section { box-shadow:none; border:1px solid #bbb; border-radius:8px; padding:16px; margin:12px 0; break-inside:avoid; } .table-wrap { overflow:visible; } table { min-width:0; font-size:8px; } th,td { padding:6px; } .grid,.priority,.hotel-list { gap:8px; } .card,.night,.metric { padding:10px; } .callout { padding:10px; } a { color:inherit; text-decoration:none; } }
+    body { font-family: Arial, sans-serif; background: #f8f3ea; color: #1e2d27; margin: 0; padding: 40px 20px; }
+    .wrapper { max-width: 760px; margin: 0 auto; background: white; border: 1px solid #ddd0bf; border-radius: 16px; padding: 28px; box-shadow: 0 10px 25px rgba(24, 41, 35, 0.08); }
+    h1 { margin-top: 0; }
+    a { color: #214b43; }
+    .status { display: inline-block; background: #edf7ef; color: #1d6940; border-radius: 999px; padding: 6px 10px; font-weight: 700; }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Ajay’s road trip · Ontario → Québec</p>
-      <h1>Quebec in fall colour</h1>
-      <p class="lede">A six-day, five-night loop through the Eastern Townships, Charlevoix and the Laurentians—built around a major hike, big views, a canopy walk and one deliberately unhurried day in Tremblant.</p>
-      <div class="trip-tags"><span>🍁 Oct 7–12, 2026</span><span>🚗 Start &amp; finish: Ajax</span><span>🏨 3 hotel bases</span><span>⛰️ Acropole des Draveurs</span></div>
-    </div>
-  </header>
-  <main>
-    <nav aria-label="Page sections"><a href="#itinerary">Master itinerary</a><a href="#book">Booking priorities</a><a href="#stays">Where to stay</a><a href="#experiences">Experiences</a><a href="#metrics">Trip picture</a><a href="#notes">Before you go</a></nav>
-
-    <section id="itinerary">
-      <h2>Master itinerary</h2>
-      <p class="sub">Every driving leg is shown separately. Times and drive durations are approximate; leave room for fuel, food, weather and fall-weekend traffic.</p>
-      <div class="legend"><span class="status red">Book in advance</span><span class="status orange">Buy/check ahead</span><span class="status green">Free / no booking</span><span class="status grey">Included / not applicable</span></div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Date</th><th>Time</th><th>Activity</th><th>Location / route</th><th>Drive</th><th>Activity duration</th><th>Booking / ticket</th><th>Hotel that night</th></tr></thead>
-        <tbody>
-          <tr><td class="date" rowspan="2">Wed<br>Oct 7</td><td class="time">4:00–11:00 PM</td><td class="activity"><strong>🚗 Begin the trip</strong><small>Long first-day driving push</small></td><td>Ajax → Lac-Mégantic / Mont-Mégantic area</td><td class="drive">~7 hr</td><td>—</td><td>—</td><td class="hotel">Lac-Mégantic / Mont-Mégantic<br><span class="status red">Hotel</span></td></tr>
-          <tr><td class="time">~11:00 PM</td><td class="activity"><strong>🛏️ Check in</strong></td><td>Lac-Mégantic / Mont-Mégantic</td><td>—</td><td>Sleep</td><td><span class="status red">Reserve</span></td><td class="hotel">Night 1</td></tr>
-          <tr><td class="date" rowspan="4">Thu<br>Oct 8</td><td class="time">~8:00 AM</td><td class="activity"><strong>☕ Breakfast</strong><small>Easy start after the long drive</small></td><td>Lac-Mégantic</td><td>—</td><td>~45 min</td><td>—</td><td class="hotel" rowspan="4">Baie-Saint-Paul<br><span class="status red">Hotel</span></td></tr>
-          <tr><td class="time">8:45–9:15 AM</td><td class="activity"><strong>🚗 Drive to the park</strong></td><td>Lac-Mégantic → <a class="place-link" href="https://www.sepaq.com/pq/mme/index.dot?language_id=1" target="_blank" rel="noopener">Parc national du Mont-Mégantic</a></td><td class="drive">~30 min</td><td>—</td><td>—</td></tr>
-          <tr><td class="time">9:15 AM–12:00 PM</td><td class="activity"><strong><a class="place-link" href="https://www.sepaq.com/pq/mme/index.dot?language_id=1" target="_blank" rel="noopener">🏔️ Mont-Mégantic</a></strong><small>Summit environment, viewpoints and short hiking</small></td><td><a class="place-link" href="https://www.sepaq.com/pq/mme/index.dot?language_id=1" target="_blank" rel="noopener">Parc national du Mont-Mégantic</a></td><td>—</td><td>~2 hr 45 min</td><td><a class="status orange place-link" href="https://www.sepaq.com/pq/mme/tarifs.dot?language_id=2" target="_blank" rel="noopener">Park access</a></td></tr>
-          <tr><td class="time">12:00–6:00 PM</td><td class="activity"><strong>🍽️ Lunch, then scenic transfer</strong></td><td>Mont-Mégantic → Baie-Saint-Paul</td><td class="drive">~4 hr 45 min–5 hr 15 min</td><td>Lunch + drive</td><td>—</td></tr>
-          <tr><td class="date" rowspan="5">Fri<br>Oct 9</td><td class="time">~8:00 AM</td><td class="activity"><strong>☕ Breakfast</strong></td><td>Baie-Saint-Paul</td><td>—</td><td>~30 min</td><td>—</td><td class="hotel" rowspan="5">Baie-Saint-Paul<br><span class="status grey">Night 2</span></td></tr>
-          <tr><td class="time">8:30–9:30 AM</td><td class="activity"><strong>🚗 Drive to Hautes-Gorges</strong></td><td>Baie-Saint-Paul → Hautes-Gorges</td><td class="drive">~1 hr</td><td>—</td><td>—</td></tr>
-          <tr><td class="time">~9:30–10:00 AM</td><td class="activity"><strong>🚶 Arrival, access &amp; shuttle</strong></td><td><a class="place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener">Parc national des Hautes-Gorges</a></td><td>—</td><td>~15–30 min</td><td><a class="status red place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener">Plan / check shuttle</a></td></tr>
-          <tr><td class="time">10:00 AM–3:00 PM</td><td class="activity"><strong><a class="place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener">🥾 Acropole des Draveurs</a></strong><small>The trip’s major mountain hike</small></td><td><a class="place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener">Hautes-Gorges</a></td><td>—</td><td>~5 hr</td><td><a class="status red place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener">Park / access</a></td></tr>
-          <tr><td class="time">3:00–5:30 PM</td><td class="activity"><strong>🌲 Gorge &amp; return</strong><small>Draveur Visitors Centre, river and cliffs; then drive back</small></td><td>Hautes-Gorges → Baie-Saint-Paul</td><td class="drive">~1 hr return</td><td>~1.5 hr explore</td><td><span class="status green">Visitor Centre</span></td></tr>
-          <tr><td class="date" rowspan="6">Sat<br>Oct 10</td><td class="time">~8:00 AM</td><td class="activity"><strong>☕ Breakfast</strong></td><td>Baie-Saint-Paul</td><td>—</td><td>~30–45 min</td><td>—</td><td class="hotel" rowspan="6">Mont-Tremblant area<br><span class="status red">Hotel</span></td></tr>
-          <tr><td class="time">8:45–9:10 AM</td><td class="activity"><strong>🚗 Drive to Le Massif</strong></td><td>Baie-Saint-Paul → <a class="place-link" href="https://www.lemassif.com/en/" target="_blank" rel="noopener">Le Massif</a></td><td class="drive">~20–25 min</td><td>—</td><td>—</td></tr>
-          <tr><td class="time">9:30–10:00 AM</td><td class="activity"><strong>🚶 Summit access / wait</strong></td><td>Le Massif</td><td>—</td><td>~30 min</td><td><span class="status orange">Lift if needed</span></td></tr>
-          <tr><td class="time">10:00–11:00 AM</td><td class="activity"><strong><a class="place-link" href="https://www.lemassif.com/en/" target="_blank" rel="noopener">🏔️ Le Buton</a></strong><small>Short hike and 360° Charlevoix panorama</small></td><td><a class="place-link" href="https://www.lemassif.com/en/" target="_blank" rel="noopener">Le Massif de Charlevoix</a></td><td>—</td><td>~1 hr</td><td><a class="status orange place-link" href="https://www.lemassif.com/en/" target="_blank" rel="noopener">Lift / ticket</a></td></tr>
-          <tr><td class="time">11:00 AM–3:30 PM</td><td class="activity"><strong>🚗 Scenic regional transfer</strong></td><td>Le Massif → Sentier des Cimes, Mont-Blanc</td><td class="drive">~4½ hr</td><td>—</td><td>—</td></tr>
-          <tr><td class="time">3:30–6:00 PM</td><td class="activity"><strong><a class="place-link" href="https://treetop-walks.com/laurentides/en-ca/ticket-office/" target="_blank" rel="noopener">🌲 Sentier des Cimes</a>, then check in</strong><small>Elevated forest / canopy perspective; short onward drive</small></td><td><a class="place-link" href="https://treetop-walks.com/laurentides/en-ca/ticket-office/" target="_blank" rel="noopener">Sentier des Cimes</a> → Tremblant</td><td class="drive">~20–30 min afterward</td><td>~2 hr</td><td><a class="status red place-link" href="https://treetop-walks.com/laurentides/en-ca/ticket-office/" target="_blank" rel="noopener">Ticket</a></td></tr>
-          <tr><td class="date" rowspan="6">Sun<br>Oct 11</td><td class="time">Early</td><td class="activity"><strong>🌅 Montagne Verte sunrise</strong><small>The only intentionally early morning</small></td><td>Tremblant area → Montagne Verte</td><td class="drive">~20–30 min each way</td><td>~2–3 hr</td><td><span class="status orange">Check access</span></td><td class="hotel" rowspan="6">Mont-Tremblant area<br><span class="status grey">Night 2</span></td></tr>
-          <tr><td class="time">~8:00–9:00 AM</td><td class="activity"><strong>🚗 Return &amp; breakfast</strong></td><td>Montagne Verte → Tremblant</td><td class="drive">~20–30 min</td><td>—</td><td>—</td></tr>
-          <tr><td class="time">9:00–11:00 AM</td><td class="activity"><strong>😌 Leisure / recovery</strong><small>Shower, coffee, village stroll or sleep in</small></td><td>Tremblant</td><td>—</td><td>~2 hr</td><td><span class="status green">Free</span></td></tr>
-          <tr><td class="time">11:00 AM–1:00 PM</td><td class="activity"><strong><a class="place-link" href="https://www.tremblant.ca/things-to-do/activities-products/ziptrek-ecotours-zipline-tours" target="_blank" rel="noopener">🧗 Ziptrek</a> <em>or</em> leisure / alternate activity</strong><small>Flexible on purpose—do not book unless you want the zipline</small></td><td>Mont-Tremblant</td><td>Local / walk</td><td>~2 hr</td><td><a class="status red place-link" href="https://www.tremblant.ca/things-to-do/activities-products/ziptrek-ecotours-zipline-tours" target="_blank" rel="noopener">Only if chosen</a></td></tr>
-          <tr><td class="time">1:00–4:00 PM</td><td class="activity"><strong><a class="place-link" href="https://www.tremblant.ca/things-to-do/activities-products/panoramic-gondola" target="_blank" rel="noopener">🚠 Panoramic Gondola + summit</a></strong><small>Gondola, summit trails, observation and photos</small></td><td>Mont-Tremblant</td><td>—</td><td>~3 hr</td><td><a class="status red place-link" href="https://www.tremblant.ca/things-to-do/activities-products/panoramic-gondola" target="_blank" rel="noopener">Gondola ticket</a></td></tr>
-          <tr><td class="time">4:00 PM–evening</td><td class="activity"><strong>🎵 Village, fall colour &amp; dinner</strong><small>Coffee, music / village atmosphere, optional sunset</small></td><td>Tremblant</td><td class="drive">Optional Mont King: ~20 min each way</td><td>~2 hr + dinner</td><td><span class="status green">Free</span></td></tr>
-          <tr><td class="date" rowspan="2">Mon<br>Oct 12</td><td class="time">~8:00 AM</td><td class="activity"><strong>☕ Breakfast &amp; checkout</strong></td><td>Tremblant</td><td>—</td><td>~30 min</td><td>—</td><td class="hotel">Home</td></tr>
-          <tr><td class="time">8:30–9:00 AM → afternoon</td><td class="activity"><strong>🚗 Drive home</strong><small>Allow a comfortable buffer before evening</small></td><td>Mont-Tremblant → Ajax</td><td class="drive">~6½ hr</td><td>~3½+ hr buffer before 8 PM</td><td>—</td><td class="hotel">Arrive ~3:30–4:30 PM</td></tr>
-        </tbody>
-      </table></div>
-      <div class="callout"><strong>Oct 11 stays flexible.</strong> The ideal rhythm is sunrise → breakfast → recover → Ziptrek <em>or</em> a slower alternative → gondola → summit → village. The zipline is an option, not a commitment; skipping it makes space for a relaxed Tremblant day.</div>
-    </section>
-
-    <section id="book">
-      <h2>Booking priorities</h2><p class="sub">Book the trip anchors first. Everything else can stay weather-aware and flexible.</p>
-      <div class="priority">
-        <article class="card red-card"><h3><span class="status red">Book first</span></h3><ul><li>All three hotel stays</li><li>Acropole / Hautes-Gorges access and shuttle plan</li><li>Sentier des Cimes timed ticket</li><li>Tremblant gondola, once weather looks good</li><li>Ziptrek only if you choose it</li></ul></article>
-        <article class="card orange-card"><h3><span class="status orange">Buy / check ahead</span></h3><ul><li>Mont-Mégantic park access</li><li>Le Massif lift / Le Buton access</li><li>Montagne Verte trail conditions and access</li><li>Fall hours, last entry and weather for every attraction</li></ul></article>
-        <article class="card green-card"><h3><span class="status green">Leave open</span></h3><ul><li>Baie-Saint-Paul evening</li><li>Draveur Visitors Centre</li><li>Tremblant village and summit trails</li><li>Mont King / sunset viewpoints</li><li>Restaurants, unless there is a must-try spot</li></ul></article>
-      </div>
-    </section>
-
-    <section id="stays"><h2>Accommodation strategy</h2><p class="sub">Three bases, five nights, and only two hotel changes—enough comfort without adding inefficient morning drives.</p>
-      <div class="hotel-list"><article class="night"><b>Oct 7 · 1 night</b><h3>Lac-Mégantic / Mont-Mégantic</h3><p>A simple, clean overnight base after the longest drive. Prioritize easy check-in and parking over a resort stay.</p></article><article class="night"><b>Oct 8–9 · 2 nights</b><h3>Baie-Saint-Paul</h3><p>Your Charlevoix base for Hautes-Gorges, the town and the Le Massif departure. A motel-style stay is entirely suitable.</p></article><article class="night"><b>Oct 10–11 · 2 nights</b><h3>Mont-Tremblant area</h3><p>Compare pedestrian-village prices with hotels 10–20 minutes away. You have a car, so value matters more than a premium address.</p></article></div>
-    </section>
-
-    <section id="experiences"><h2>What this trip gives you</h2><p class="sub">Each stop earns its place by offering a different kind of fall experience—not another copy of the same hike.</p>
-      <div class="grid"><article class="card"><div class="icon">⛰️</div><h3>Big mountain days</h3><p>Mont-Mégantic introduces the trip; Acropole des Draveurs is the serious hike; Le Buton adds a compact, high-payoff panorama.</p></article><article class="card"><div class="icon">🌊</div><h3>Charlevoix scale</h3><p>Hautes-Gorges brings river, cliffs and gorge scenery, while Baie-Saint-Paul creates room for an unhurried evening between ambitious days.</p></article><article class="card"><div class="icon">🌲</div><h3>A new perspective</h3><p>Sentier des Cimes is a canopy-level forest experience, distinct from the mountain summits and road views elsewhere on the route.</p></article><article class="card"><div class="icon">🌅</div><h3>One sunrise</h3><p>Montagne Verte supplies the trip’s single early start—an intentional highlight, rather than a daily habit.</p></article><article class="card"><div class="icon">🚠</div><h3>Laurentian panorama</h3><p>Tremblant’s gondola and summit trails provide large views without asking for one more punishing hike.</p></article><article class="card"><div class="icon">☕</div><h3>Room to breathe</h3><p>Oct 11 protects an adaptable leisure block for Ziptrek, a village afternoon, music, coffee or simply doing less.</p></article></div>
-      <p class="note">Swipe or shift-scroll through the route gallery. Each card opens the relevant official visitor or booking page.</p>
-      <div class="gallery" aria-label="A horizontal visual preview of the road-trip stops">
-        <a class="place-link" href="https://www.tourismemegantic.com/en/" target="_blank" rel="noopener"><figure class="photo"><img src="https://4.bp.blogspot.com/-JCRwtUCl1Qg/Tv3QpVA9MPI/AAAAAAAACP0/nTkJYjkqgAM/s1600/Lac%2BM%25C3%25A9gantic%2B8.jpg" alt="Lac-Mégantic surrounded by autumn foliage" loading="lazy"><figcaption>Lac-Mégantic<small>Day 1 · Wed Oct 7 · first-night base</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.sepaq.com/pq/mme/index.dot?language_id=1" target="_blank" rel="noopener"><figure class="photo"><img src="https://s3.amazonaws.com/imagescloud/images/medias/blogue/annexe-sentier-spectaculaire-galerie-6.jpg" alt="Autumn viewpoint in Mont-Mégantic National Park" loading="lazy"><figcaption>Mont-Mégantic viewpoint<small>Day 2 · Thu Oct 8 · summit trails</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.sepaq.com/pq/mme/index.dot?language_id=1" target="_blank" rel="noopener"><figure class="photo"><img src="https://d397xw3titc834.cloudfront.net/images/original/8/7d/87dc8f99829741f40deb405ed9292a6d.jpg" alt="Hiker overlooking the Mont-Mégantic autumn landscape" loading="lazy"><figcaption>Mont-Mégantic panorama<small>Day 2 · Thu Oct 8 · park visit</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.tourisme-charlevoix.com/en/" target="_blank" rel="noopener"><figure class="photo"><img src="https://assets.germainhotels.com/germain-website-assets-production/website-assets/Germain-H%C3%B4tels/blogue/G-Charlevoix/PA120460_2.jpg" alt="Baie-Saint-Paul in autumn" loading="lazy"><figcaption>Baie-Saint-Paul<small>Days 2–3 · Oct 8–9 · two-night base</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener"><figure class="photo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Fullsize_-_PA020995_-_1_of_2.jpg" alt="Acropole des Draveurs and the autumn Hautes-Gorges landscape" loading="lazy"><figcaption>Acropole des Draveurs<small>Day 3 · Fri Oct 9 · major hike</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.sepaq.com/pq/hgo/index.dot?language_id=1" target="_blank" rel="noopener"><figure class="photo"><img src="https://cdn.prod.website-files.com/636d4371a62e06ff46b33151/65050d60246b11c3f5c5503d_draveur-visitors-centre-bridge-quebec-3.jpg" alt="Draveur Visitors Centre bridge and autumn foliage" loading="lazy"><figcaption>Draveur Visitors Centre<small>Day 3 · Fri Oct 9 · gorge stop</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.lemassif.com/en/blog/6-things-to-do-this-fall-in-charlevoix" target="_blank" rel="noopener"><figure class="photo"><img src="https://www.lemassif.com/sites/default/files/styles/scale_1440/public/2025-09/A.Blanchette%202021-10-02-_46A7165_0_0.jpg?itok=IPz-FZm6" alt="Le Massif gondola above autumn colours" loading="lazy"><figcaption>Le Massif / Le Buton<small>Day 4 · Sat Oct 10 · Charlevoix panorama</small></figcaption></figure></a>
-        <a class="place-link" href="https://treetop-walks.com/laurentides/en-ca/ticket-office/" target="_blank" rel="noopener"><figure class="photo"><img src="https://images-proxy.eaq-services.com/image/upload/c_auto%2Cw_1200%2Ch_1200%2Cg_custom/f_auto/q_auto/v1/couleurs_18092023_2?_a=BBEAEuzp0" alt="Sentier des Cimes observation tower above autumn forest" loading="lazy"><figcaption>Sentier des Cimes<small>Day 4 · Sat Oct 10 · canopy walk</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.tremblant.ca/things-to-do/activities/hiking" target="_blank" rel="noopener"><figure class="photo"><img src="https://i0.wp.com/freedomtourtravel.com/wp-content/uploads/2022/10/Mont-Tremblant-Old-Village.jpeg?resize=580%2C435&amp;ssl=1" alt="Mont-Tremblant village with autumn colour" loading="lazy"><figcaption>Montagne Verte sunrise<small>Day 5 · Sun Oct 11 · check access first</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.tremblant.ca/things-to-do/activities-products/panoramic-gondola" target="_blank" rel="noopener"><figure class="photo"><img src="https://www.tremblant.ca/-/media/tremblant/things-to-do/activities/panoramic-gondola-fall.jpg?hash=9B0B8A2305348B295BA9C28285BB32D5&amp;rev=09ca585c1df34692bab2a50b374eb657%3Fh%3D1350&amp;w=2400" alt="Tremblant panoramic gondola over fall foliage" loading="lazy"><figcaption>Mont-Tremblant gondola<small>Day 5 · Sun Oct 11 · summit views</small></figcaption></figure></a>
-        <a class="place-link" href="https://www.tremblant.ca/things-to-do/activities-products/ziptrek-ecotours-zipline-tours" target="_blank" rel="noopener"><figure class="photo"><img src="https://www.tremblant.ca/-/media/tremblant/things-to-do/activities/ziptrek-ecotours.jpg?w=1200&amp;rev=8d334fe1d4a4425dadd9894c154889f9&amp;hash=F161B30D5D0BF6044D014179C1AC8B2D" alt="Ziptrek zipline experience at Mont-Tremblant" loading="lazy"><figcaption>Ziptrek—optional<small>Day 5 · Sun Oct 11 · flexible adventure</small></figcaption></figure></a>
-      </div>
-    </section>
-
-    <section id="metrics"><h2>The trip at a glance</h2><p class="sub">Approximate route metrics based on the working itinerary.</p>
-      <div class="metrics"><div class="metric"><b>6</b><span>days</span></div><div class="metric"><b>5</b><span>nights</span></div><div class="metric"><b>3</b><span>hotel bases</span></div><div class="metric"><b>2</b><span>hotel changes</span></div><div class="metric"><b>27–28</b><span>driving hours</span></div><div class="metric"><b>~7 hr</b><span>longest leg · Oct 7</span></div><div class="metric"><b>1</b><span>intentionally early morning</span></div><div class="metric"><b>3½+ hr</b><span>final-day buffer</span></div></div>
-      <div class="flex" style="margin-top:20px"><div class="flow">Oct 7 · 🚗 Drive<br>Oct 8 · ⛰️ Mountain → 🚗 Charlevoix<br>Oct 9 · 🥾 Big hike + gorge<br>Oct 10 · ⛰️ Mountain → 🚗 transfer → 🌲 canopy<br>Oct 11 · 🌅 → 😌 → 🧗/☕ → 🚠<br>Oct 12 · 🚗 Drive home</div><div class="card"><h3>Daily driving estimate</h3><p><strong>Oct 7:</strong> ~7 hr &nbsp;·&nbsp; <strong>Oct 8:</strong> ~5¼–5¾ hr &nbsp;·&nbsp; <strong>Oct 9:</strong> ~2 hr &nbsp;·&nbsp; <strong>Oct 10:</strong> ~5 hr &nbsp;·&nbsp; <strong>Oct 11:</strong> ~1–1½ hr local &nbsp;·&nbsp; <strong>Oct 12:</strong> ~6½ hr</p><p>Oct 10 is the tightest day. Keep the Le Massif → Sentier des Cimes drive honest and be ready to shorten Le Buton if traffic or weather eats into the buffer.</p></div></div>
-    </section>
-
-    <section id="notes"><h2>Before you go</h2><div class="callout"><strong>Verify 2026 fall operations shortly before booking.</strong> Lift, gondola, shuttle, park-capacity and last-entry times can change with weather and seasonal operations. This itinerary uses the planned windows, but official operator pages should have the final word.</div><p class="note">Designed as a self-contained page for GitHub Pages: no scripts, fonts, images or external dependencies are required. Open this file directly in any modern browser or publish it as <code>index.html</code> in a GitHub Pages repository.</p></section>
-  </main>
-  <footer>Quebec Fall Colours Road Trip · October 7–12, 2026 · Prepared for Ajay</footer>
+  <div class="wrapper">
+    <h1>Quebec fall trip plan</h1>
+    <p><span class="status">Updated</span> This page is kept as a legacy placeholder. The final, active itinerary is in <a href="index.html">index.html</a>.</p>
+    <p>Supporting trip docs are stored in the <a href="docs/trip-confirmation-checklist.md">docs</a> folder and include the booking checklist, route map pins, and parking notes.</p>
+  </div>
 </body>
 </html>
